@@ -1,15 +1,22 @@
-import { Carousel } from 'bootstrap'
+import  Carousel  from 'react-bootstrap/Carousel'
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Slider = () => {
+const Slider = ({start}) => {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <img
-          className='d-block w-100'
-          src=""
-          alt="first slide" />
-      </Carousel.Item>
+    <Carousel fade>
+        {
+        start.map((item) => {
+            return (
+            <Carousel.Item>
+                    <img
+                  className='d-block w-100'
+                  src={item}
+                  alt="first slide" 
+                  />
+            </Carousel.Item>
+        )})
+        }
     </Carousel>
   )
 }
