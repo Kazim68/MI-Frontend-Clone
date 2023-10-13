@@ -21,6 +21,7 @@
 
 .navlinks:hover{
     color: orangered;
+    text-decoration: none;
 }
 
 .logo{
