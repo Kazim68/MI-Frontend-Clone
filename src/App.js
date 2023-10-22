@@ -3,7 +3,7 @@ import PreNavbar from './components/preNavbar.jsx';
 import Navbar from './components/Navbar.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Slider from './components/Slider.jsx';
-import data from './data/data.json'
+//import data from './data/data.json'
 import Offers from './components/Offers.jsx'
 import Headers from './components/Headers.jsx'
 import StarProduct from './components/StarProduct.jsx'
@@ -14,9 +14,22 @@ import Videos from './components/Videos.jsx'
 import Banner from './components/Banner.jsx'  
 import Footer from './components/Footer.jsx'
 import NavOptions from './components/NavOptions.jsx'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { fetchData } from './reducer/action.js'
 
 function App() {
+  
+  const dispatch = useDispatch()
 
+  useEffect(() => { 
+    fetchData(dispatch)
+  }, [dispatch])
+
+  const data = useSelector(state => state.data.data)
+
+  console.log()
+  
   return (
 
     <Router>
