@@ -22,16 +22,13 @@ function App() {
   
   const dispatch = useDispatch()
 
-  useEffect(() => { 
-    fetchData(dispatch)
-  }, [dispatch])
-
   const data = useSelector(state => state.data.data)
 
   console.log()
   
   return (
-
+  <>
+    {fetchData(dispatch)}
     <Router>
       <PreNavbar/>
       <Navbar />
@@ -42,6 +39,7 @@ function App() {
       <StarProduct StarProduct={data.starProduct} />
       <Headers text='HOT ACCESSORIES' />
       <HotAccessoriesMenu />
+    
 
       <Routes>
         <Route exact path='/music'
@@ -71,7 +69,8 @@ function App() {
       
       <Footer footer={data.footer}/>
 
-    </Router>
+      </Router>
+      </>
 
   );
 
