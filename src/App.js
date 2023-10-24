@@ -24,11 +24,14 @@ function App() {
 
   const data = useSelector(state => state.data.data)
 
-  console.log()
+  useEffect(() => {
+    fetchData(dispatch)
+  }, [])
+
+  console.log('now data')
+  console.log(data)
   
   return (
-  <>
-    {fetchData(dispatch)}
     <Router>
       <PreNavbar/>
       <Navbar />
@@ -70,7 +73,6 @@ function App() {
       <Footer footer={data.footer}/>
 
       </Router>
-      </>
 
   );
 

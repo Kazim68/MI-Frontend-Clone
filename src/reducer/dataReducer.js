@@ -1,21 +1,28 @@
-import { createReducer } from '@reduxjs/toolkit';   
+import { createSlice } from '@reduxjs/toolkit';   
 
-export const dataReducer = createReducer({
-    data : {}
-}, {
-    FETCH_DATA_SUCCESS: (state, action) => { 
-        return {
-            ...state,
-            data: action.payload
-        }  
-    }, 
-    FETCH_DATA_ERROR: (state, action) => { 
-        return {
-            ...state,
-            data : null
-        }  
+export const dataReducer = createSlice({
+    name: 'data',
+    initialState: {
+        data: {}
     },
-    default: (state, action) => {
-        return state
+
+    reducers: {
+        FETCH_DATA_SUCCESS: (state, action) => {
+            console.log("now payload");
+            console.log(action.payload)
+            state.data = action.payload
+            console.log("now state");
+            console.log(state.data)
+        },
+        FETCH_DATA_ERROR: (state, action) => {
+            state.data = null
+        },
+        default: (state, action) => {
+            return state
+        }
     }
 })
+
+export const { FETCH_DATA_SUCCESS, FETCH_DATA_ERROR } = dataReducer.actions
+
+export default dataReducer.reducer
